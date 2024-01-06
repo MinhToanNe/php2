@@ -1,5 +1,4 @@
 <?php
-// include "./mvc/controller.php";
 
 $course = [
     's1' => 'course1',
