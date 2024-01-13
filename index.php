@@ -19,6 +19,9 @@ $db = new route();
 
 use model\basemodel as model;
 $db = new model();
+
+use controller\baseController as controller;
+$db = new controller();
 ?>
 
 

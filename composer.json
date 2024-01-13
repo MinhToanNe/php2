@@ -5,7 +5,8 @@
         "psr-4": {
             "Core\\": "Core/",
             "Core1\\": "App/Core",
-            "model\\": "App/Model"
+            "model\\": "App/Model",
+            "controller\\": "App/Controller"
         }
     },
     "authors": [
