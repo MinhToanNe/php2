@@ -18,13 +18,13 @@ class App
 
         if (isset($arr[0])) {
             $controllerName = ucfirst(strtolower($arr[0])) . 'Controller';
-            if (file_exists('./App/controller/' . $controllerName . '.php')) {
+            if (file_exists('./App/controllers/' . $controllerName . '.php')) {
                 $this->controller = $controllerName;
                 unset($arr[0]);
             }
         }
 
-        require_once './App/controller/' . $this->controller . '.php';
+        require_once './App/controllers/' . $this->controller . '.php';
 
         $this->controller = new $this->controller;
 
