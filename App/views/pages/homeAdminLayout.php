@@ -7,11 +7,11 @@
     </div>
 
     <!-- Navbar -->
-    <?php include "./App/view/blocks/navbar.php" ?>
+    <?php include "./App/views/blocks/navbar.php" ?>
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <?php include "./App/view/blocks/sidebar.php" ?>
+    <?php include "./App/views/blocks/sidebar.php" ?>
 
 
     <!-- Content Wrapper. Contains page content -->
@@ -586,7 +586,7 @@
                         <a href="#" class="dropdown-item">Add new event</a>
                         <a href="#" class="dropdown-item">Clear events</a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">View calendar</a>
+                        <a href="#" class="dropdown-item">views calendar</a>
                       </div>
                     </div>
                     <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
