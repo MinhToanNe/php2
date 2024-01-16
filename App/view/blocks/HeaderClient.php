@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +11,16 @@
 </head>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
 </head>
-<body>
-    <div class="row header">
 
-    </div>
-    
+<body>
+    <div class="container">
+        <div class=" row headerClient mb-4 justify-content-center rounded">
+            <h1 class="headerLogo p-3"><img src="/public/img/361917679_102400556274159_3321603520184361577_n-removebg-preview.png" alt="Logo" width="100px"></h1>
+
+        </div>
