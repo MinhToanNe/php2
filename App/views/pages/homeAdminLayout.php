@@ -7,11 +7,7 @@
     </div>
 
     <!-- Navbar -->
-    <?php include "./App/views/blocks/navbar.php" ?>
-    <!-- /.navbar -->
 
-    <!-- Main Sidebar Container -->
-    <?php include "./App/views/blocks/sidebar.php" ?>
 
 
     <!-- Content Wrapper. Contains page content -->
