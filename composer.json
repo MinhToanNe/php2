@@ -7,9 +7,10 @@
             "Core1\\": "App/Core",
             "model\\": "App/Model",
             "controller\\": "App/Controller",
-            "app\\core\\": "Core/",
-            "form\\": "Core/",
+            "app\\core\\": "App/Core/",
+            "form\\": "App/Core/",
             "App\\Models\\": "App/Model"
+            
 
         }
     },

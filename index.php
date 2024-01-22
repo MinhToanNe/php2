@@ -1,33 +1,19 @@
 <?php
-// require "database.php";
 
-
-
-// spl_autoload_register(
-//     function ($class) {
-//         include $class . ".php";
-//     }
-// );
 
 require 'vendor/autoload.php';
 
 
 use app\core\Form;
 use App\Models\user;
-$user = new user('user');
-$user->getOne(1,1);
-// use Core\database as db;
-// $db = new db();
 
-// use Core1\route as route;
-// $db = new route();
+use app\core\route as Router;
 
-// use model\basemodel as model;
-// $db = new model();
+$router = new Router();
+$router->register('/' ,function (){echo"home";});
+// $user = new user('user');
+// $user->getOne(1,1);
 
-// use controller\baseController as controller;
-// $db = new controller();
-// 
 ?>
 
 
@@ -42,24 +28,7 @@ $user->getOne(1,1);
 </head>
 
 <body>
-    <div class="container">
-        <h1>Create an account</h1>
-        <?php $form = Form::begin('', 'post'); ?>
-        <div class="row">
-            <div class="col">
-                <?php echo $form->field('firstname'); ?>
-            </div>
-            <div class="col">
-                <?php echo $form->field('lastname'); ?>
-            </div>
-        </div>
 
-        <div class="col"><?= $form->field('email'); ?></div>
-        <div class="col"><?= $form->field('password')->passwordField(); ?></div>
-        <?= $form->field('confirmpassword')->passwordField(); ?>
-        <button type="submit" class="btn btn-primary">submit</button>
-        <?= Form::end() ?>
-    </div>
 </body>
 
 </html>
