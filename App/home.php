@@ -2,22 +2,22 @@
 namespace app;
 class home
 {
-    public static function index():string
+    public static function index()
     {
-        return "Home";
+        echo "Home";
 
     }
 }
 
 class invoices
 {
-    public static function index(): string
+    public static function index()
     {
-        return "Invoice";
+        echo "Invoice";
     }
 
-    public static function create(): string
+    public static function create()
     {
-        return "Create Invoice";
+        echo "Create Invoice";
     }
 }

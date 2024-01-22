@@ -9,7 +9,8 @@
             "controller\\": "App/Controller",
             "app\\core\\": "App/Core/",
             "form\\": "App/Core/",
-            "App\\Models\\": "App/Model"
+            "App\\Models\\": "App/Model",
+            "app\\":"App/"
             
 
         }

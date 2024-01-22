@@ -9,10 +9,15 @@ use App\Models\user;
 
 use app\core\route as Router;
 
+
+
 $router = new Router();
-$router->register('/' ,function (){echo"home";});
-// $user = new user('user');
-// $user->getOne(1,1);
+// $router->register('/' ,function (){echo"home";});
+// $router->register('/invoices' ,function (){echo"invoices";});
+$router->register('/' , [app\home::class,"index"]);
+$router->register('/invoices' , [app\invoices::class,"index"]);
+$router->register('/invoices/cr' , [app\invoices::class,"create"]);
+$router->resolve($_SERVER['REQUEST_URI']);
 
 ?>
 
