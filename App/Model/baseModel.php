@@ -1,9 +1,18 @@
 <?php
- namespace model;
- class basemodel
+ namespace App\Model;
+ require "./App/interfaces/ModelInterface.php";
+ use App\Interfaces\ModelInterface;
+ abstract class baseModel implements ModelInterface
  {
-    public function __construct()
+    protected $table;
+    public function __construct($table)
     {
-        echo "basemodel";
+        $this->table = $table;
+        echo $table.'<br>';
+
     }
+    public function getOne($id,$connet)
+    {
+        echo "function getone"."".$id;   
+     }
  }

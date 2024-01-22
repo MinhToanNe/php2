@@ -8,7 +8,8 @@
             "model\\": "App/Model",
             "controller\\": "App/Controller",
             "app\\core\\": "Core/",
-            "form\\": "Core/"
+            "form\\": "Core/",
+            "App\\Models\\": "App/Model"
 
         }
     },

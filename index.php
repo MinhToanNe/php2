@@ -11,8 +11,11 @@
 
 require 'vendor/autoload.php';
 
-use app\core\Field;
+
 use app\core\Form;
+use App\Models\user;
+$user = new user('user');
+$user->getOne(1,1);
 // use Core\database as db;
 // $db = new db();
 
