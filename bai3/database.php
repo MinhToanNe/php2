@@ -15,5 +15,5 @@ if (!$conn) {
 
 
 mysqli_set_charset($conn, 'utf8');
+var_dump($conn);
 
-?>

@@ -2,7 +2,7 @@
 function getBlogCategory()
 {
     include "database.php";
-    $sql = "SELECT * FROM category";
+    $sql = "SELECT * FROM categorys";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->get_result();

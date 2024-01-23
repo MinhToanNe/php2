@@ -2,7 +2,7 @@
 function getBlogById($id)
 {
     include "database.php";
-    $sql = "SELECT * FROM blog WHERE id = ?";
+    $sql = "SELECT * FROM blogs WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
