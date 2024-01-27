@@ -1,0 +1,25 @@
+{
+    "name": "toan/autoload",
+    "description": "lab 2 bai 4",
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Core1\\": "App/Core",
+            "model\\": "App/Model",
+            "controller\\": "App/Controller",
+            "app\\core\\": "App/Core/",
+            "form\\": "App/Core/",
+            "App\\Models\\": "App/Model",
+            "app\\":"App/"
+            
+
+        }
+    },
+    "authors": [
+        {
+            "name": "toankhung",
+            "email": "lyminhtoan2004@gmail.com"
+        }
+    ],
+    "require": {}
+}
