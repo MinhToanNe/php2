@@ -7,7 +7,7 @@ namespace app\core;
 class route
 {
     protected array $routes;
-    public function register(string $requestMethod, string $route, callable|array $action): self
+    public function register(string $requestMethod, string $route,  $action): self
     {
         //var_dump($route);
         $this->routes[$requestMethod][$route] = $action;
@@ -16,11 +16,11 @@ class route
     }
 
 
-    public function get(string $route, callable|array $action): self
+    public function get(string $route,  $action): self
     {
         return $this->register('get', $route, $action);
     }
-    public function post(string $route, callable|array $action): self
+    public function post(string $route,  $action): self
     {
         return $this->register('post', $route, $action);
     }
