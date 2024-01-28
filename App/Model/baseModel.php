@@ -21,6 +21,6 @@
     {}
     public function getOne($id,$connet)
     {
-        echo "function getone"."".$id;   
+        
      }
  }

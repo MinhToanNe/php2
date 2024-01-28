@@ -1,39 +1,24 @@
 <?php
-
-
 require 'vendor/autoload.php';
+require './App/home.php';
+require './App/login.php';
+use Core\database as db;
+$database = new db();
+$database->pdo_get_connection();
 
-
-use app\core\Form;
-use App\Models\user;
-
+session_start();
 use app\core\route as Router;
-
-
-
 $router = new Router();
 // $router->register('/' ,function (){echo"home";});
 // $router->register('/invoices' ,function (){echo"invoices";});
-$router->register('/' , [app\home::class,"index"]);
-$router->register('/invoices' , [app\invoices::class,"index"]);
-$router->register('/invoices/cr' , [app\invoices::class,"create"]);
-$router->resolve($_SERVER['REQUEST_URI']);
+$router
+->get('/' , [app\home::class,"index"])
+->post('/upload' , [app\home::class,"upload"])
+->get('/login', [app\login::class,"login"])
+->post('/login', [app\login::class,"login"]);
+echo $router->resolve(strtolower($_SERVER['REQUEST_METHOD']),$_SERVER['REQUEST_URI']);
 
-?>
 
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
-</head>
 
-<body>
-
-</body>
-
-</html>

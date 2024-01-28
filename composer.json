@@ -3,8 +3,7 @@
     "description": "lab 2 bai 4",
     "autoload": {
         "psr-4": {
-            "Core\\": "Core/",
-            "Core1\\": "App/Core",
+            "Core\\": "App/Core/",
             "model\\": "App/Model",
             "controller\\": "App/Controller",
             "app\\core\\": "App/Core/",

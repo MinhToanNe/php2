@@ -1,30 +1,39 @@
 <?php
 
 namespace Core;
-
-use mysqli;
-
+use PDO;
+use PDOException;
 class database
 {
-    public function __construct()
-    {
+    function pdo_get_connection(){
         $servername = "localhost";
         $username = "root";
         $password = "mysql";
-        $dbname = "php2";
-
-        // Tạo kết nối
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Kiểm tra kết nối
-        if ($conn->connect_error) {
-            die("Kết nối thất bại: " . $conn->connect_error);
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=php2", $username, $password);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // echo "Connected successfully";
+        } catch(PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
         }
-        echo "Kết nối thành công";
+        return $conn;
     }
 
-    public function HelloWorld()
-    {
-        echo "Hello World";
+    function pdo_query_one($sql){
+        $sql_args = array_slice(func_get_args(), 1);
+        try{
+            $conn = $this->pdo_get_connection();
+            $stmt = $conn->prepare($sql);
+            $stmt->execute($sql_args);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $row;
+        }
+        catch(PDOException $e){
+            throw $e;
+        }
+        finally{
+            unset($conn);
+        }
     }
 }
