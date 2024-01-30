@@ -1,11 +1,13 @@
 <?php
 use App\Core\Controller;
-class AdminController extends Controller
+use App\Core\render;
+
+class AdminController extends render
 {
     public function index()
     {
         
-        $this->view('AdminLayout', [
+        $this->render('AdminLayout', [
             'pages' => 'homeAdminLayout',
         ]);
     }

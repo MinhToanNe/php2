@@ -1,11 +1,13 @@
 <?php
 use App\Core\Controller;
-class Clientlayoutcontroller extends Controller
+use App\Core\render;
+
+class Clientlayoutcontroller extends render
 {
     public function index()
     {
 
-        $this->view('ClientLayout', [
+        $this->render('ClientLayout', [
             'pages' => 'homeClientLayout',
         ]);
     }

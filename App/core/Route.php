@@ -1,6 +1,6 @@
 <?php
 namespace App\Core;
-class App
+class Route
 {
     protected $controller = 'ClientLayoutController';
     protected $method = 'index';

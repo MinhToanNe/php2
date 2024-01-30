@@ -1,5 +1,4 @@
 <?php
-
 require_once "init.php";
-use App\Core\App;
-$App = new App();
+use App\Core\Route;
+$App = new Route();
