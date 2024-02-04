@@ -11,5 +11,6 @@ class render
     public function renderModels($file)
     {
         require_once './App/models/' . $file . '.php';
+        return new $file;
     }
 }

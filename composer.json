@@ -2,7 +2,9 @@
     "name": "toan/asm",
     "autoload": {
         "psr-4": {
-            "App\\Core\\": "App/Core"
+            "App\\Core\\": "App/core",
+            "App\\controllers\\": "App/controllers"
+
         }
     },
     "authors": [

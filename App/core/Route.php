@@ -2,7 +2,7 @@
 namespace App\Core;
 class Route
 {
-    protected $controller = 'ClientLayoutController';
+    protected $controller = 'HomeController';
     protected $method = 'index';
     protected $params = [];
 

@@ -1,0 +1,18 @@
+body {
+    background-color: #f8f9fa;
+  }
+  .card {
+    background-color:rgb(108, 105, 105);
+    color: #ffffff;
+  }
+  .card-header {
+    background-color: #0056b3;
+  }
+  .btn-primary {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  .btn-primary:hover {
+    background-color: #004080;
+    border-color: #004080;
+  }
