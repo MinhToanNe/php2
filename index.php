@@ -5,7 +5,5 @@ use App\Core\Route;
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-echo $_SESSION['admin_id'];
-// unset($_SESSION["admin_id"]);
 $App = new Route();
 

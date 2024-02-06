@@ -16,3 +16,11 @@ body {
     background-color: #004080;
     border-color: #004080;
   }
+  button a {
+    text-decoration: none; /* Bỏ gạch dưới liên kết trong nút */
+    color: inherit; /* Giữ màu chữ của liên kết giống như mặc định */
+}
+button a:hover {
+  text-decoration: none; /* Bỏ gạch dưới liên kết trong nút */
+  color: inherit; /* Giữ màu chữ của liên kết giống như mặc định */
+}

@@ -31,13 +31,13 @@ class Database
     //Xóa $sql = "DELETE FROM loai WHERE ma_loai=?";
     //Ví dụ $sql = "INSERT INTO users (name,email,password) VALUES(?,?,?)";
     // pdo_execute($sql, "testpdo", "pdo@gmail.com", "12345pdo");
-    function pdo_execute($sql)
-    {
+    function pdo_execute($sql) {
         $sql_args = array_slice(func_get_args(), 1);
         try {
             $conn = $this->pdo_get_connection();
             $stmt = $conn->prepare($sql);
-            $stmt->execute($sql_args);
+            $success = $stmt->execute($sql_args);
+            return $success; // Trả về true nếu thành công, ngược lại trả về false
         } catch (PDOException $e) {
             throw $e;
         } finally {

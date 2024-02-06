@@ -14,10 +14,9 @@ class Homecontroller extends BaseController
     }
     public function index()
     {
-        $data = "1";
 
         $this->_renderBase->renderHeader();
-        $this->load->render('pages/homeClientLayout', $data);
+        $this->load->render('pages/homeClientLayout');
         
     }
 

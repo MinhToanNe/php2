@@ -1,5 +1,5 @@
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/public/css/formLogin.css">
 <body>
 
@@ -8,20 +8,15 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-header">
-          Đăng Nhập
+          Quên mật khẩu
         </div>
         <div class="card-body">
           <form method="post">
             <div class="form-group">
-              <label for="username">Tên người dùng:</label>
-              <input type="text" class="form-control" id="username" name="username" required>
+              <label for="username">Email:</label>
+              <input type="text" class="form-control"  name="email" required>
             </div>
-            <div class="form-group">
-              <label for="password">Mật khẩu:</label>
-              <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Đăng Nhập</button>
-            <button type="submit" class="btn btn-primary"><a href="/ForgetPassword">Quên Mật Khẩu</a></button>
+            <button type="submit" class="btn btn-primary">Xác nhận</button>
           </form>
         </div>
       </div>
