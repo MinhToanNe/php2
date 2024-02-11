@@ -15,8 +15,12 @@ abstract class BaseModel  implements InterfaceModel
     {
         $sql = "SELECT * FROM $table WHERE $col = ?";
         return  $this->db->pdo_query($sql,$value);
+    }
 
-
+    public function GetAll($table)
+    {
+        $sql = "SELECT  * FROM $table ";
+        return $this->db->pdo_query($sql);
     }
     public function Create()
     {

@@ -14,7 +14,7 @@
           <form method="post">
             <div class="form-group">
               <label for="username">Mật khẩu mới</label>
-              <input type="text" class="form-control" id="password" name="password" required>
+              <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Xác nhận</button>
           </form>

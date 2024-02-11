@@ -53,24 +53,16 @@
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Tiêu đề</th>
-                        <th>Nội dung</th>
-                        <th>Thể loại</th>
-                        <th>Image</th>
-                        <th>Người thêm</th>
-                        <th>Ngày thêm</th>
+                        <th>Tên danh mục</th>
+                        <th>Ngày tạo</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <?php if (isset($data['BlogList'])) : ?>
-                        <?php foreach ($data['BlogList'] as $Blog) : ?>
-                          <td><?= $Blog['id'] ?></td>
-                          <td><?= $Blog['title'] ?></td>
-                          <td><?= $Blog['content'] ?></td>
-                          <td><?= $Blog['name'] ?></td>
-                          <td><?= $Blog['image'] ?></td>
-                          <td><?= $Blog['user_name'] ?></td>
-                          <td><?= $Blog['created_at'] ?></td>
+                      <?php if (isset($data['category'])) : ?>
+                        <?php foreach ($data['category'] as $category) : ?>
+                          <td><?= $category['id'] ?></td>
+                          <td><?= $category['name'] ?></td>
+                          <td><?= $category['created_at'] ?></td>
                     </tbody>
                   <?php endforeach ?>
                 <?php endif ?>
