@@ -18,6 +18,7 @@
           <a href="#" class="d-block"><?= $name['user_name'] ?></a>
         </div>
         <?php endforeach ?>
+        
         <div class= "ml-5 mt-1"><a href="/logout">Đăng xuất</a></div>
         
   
@@ -43,7 +44,7 @@
         
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="nav-icon fas fa-blog"></i>
               <p>
                 Bài viết
                 <i class="right fas fa-angle-left"></i>
@@ -51,13 +52,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="/admin" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="/admin/add" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm</p>
                 </a>
@@ -66,7 +67,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon fas fa-user"></i>
               <p>
                 Người dùng
                 <i class="fas fa-angle-left right"></i>
@@ -84,7 +85,7 @@
           </li>
           <li class="nav-item">
             <a href="" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
+              <i class="nav-icon fas fa-tag"></i>
               <p>
                 Danh mục
                 <i class="fas fa-angle-left right"></i>

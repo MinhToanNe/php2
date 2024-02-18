@@ -54,28 +54,35 @@
                       <tr>
                         <th>ID</th>
                         <th>Tiêu đề</th>
-                        <th>Nội dung</th>
                         <th>Thể loại</th>
                         <th>Image</th>
                         <th>Người thêm</th>
                         <th>Ngày thêm</th>
+                        <th>Thao tác</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php if (isset($data['BlogList'])) : ?>
                         <?php foreach ($data['BlogList'] as $Blog) : ?>
-                          <td><?= $Blog['id'] ?></td>
-                          <td><?= $Blog['title'] ?></td>
-                          <td><?= $Blog['content'] ?></td>
+                          <td ><?= $Blog['id'] ?></td>
+                          <td class="text-wrap"><?= $Blog['title'] ?></td>
                           <td><?= $Blog['name'] ?></td>
-                          <td><?= $Blog['image'] ?></td>
+                          <td><img src="<?= $Blog['image'] ?>" style= "width:150px; height:100px;" alt="Đang cập nhật"></td>
                           <td><?= $Blog['user_name'] ?></td>
-                          <td><?= $Blog['created_at'] ?></td>
+                          <td><?= substr($Blog['created_at'],0,10) ?></td>
+                          <td class = row>
+                            <a class="btn btn-primary col-5" href="/admin/edit?id=<?=$Blog['id']?>">Sửa</a>
+                            <form class="col" method="post" action = "/admin/delete">
+                                <input name="id" type="hidden" value="<?= $Blog['id'] ?>">
+                                <button type ="submit" class = "btn btn-danger">Xóa</button>
+                            </form>
+                          </td>
                     </tbody>
                   <?php endforeach ?>
                 <?php endif ?>
                   </table>
                 </div>
+                
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->

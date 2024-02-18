@@ -1,41 +1,30 @@
+<link rel="stylesheet" href="/public/css/blogDetail.css">
 <div id="main-content" class="blog-page">
 
     <div class="row clearfix">
         <div class="col-lg-8 col-md-12 left-box">
-            <? if (isset($data['Blog'])) : ?>
-                <? foreach ($data['Blog'] as $Blog) : ?>
-                    <div class="card single_post">
-                        <div class="body">
-                            <div class="img-post">
-                                <img class="d-block img-fluid" src="<?= $Blog['image'] ?>" alt="First slide">
+            <? if(isset($data['Blog'])): ?>
+                <? foreach($data['Blog'] as $Blog):?>
+            <div class="card single_post">
+                <article class="article">
+                    <div class="article-img">
+                        <img src="/<?=$Blog['image']?>" title="" alt="">
+                    </div>
+                    <div class="article-title">
+                        <h2><?=$Blog['title']?></h2>
+                        <div class="media">
+                            <div class="media-body">
+                                <span><?=substr($Blog['created_at'],0,10)?></span>
                             </div>
-                            <h3><a href="/home/detailBlog?id=<?= $Blog['id']?>"><?= $Blog['title'] ?></a></h3>
-                        </div>
-                        <div class="footer">
-                            <div class="actions">
-                                <a href="/home/detailBlog?id=<?= $Blog['id']?>" class="btn btn-outline-secondary">Đọc</a>
-                            </div>
-                            <ul class="stats">
-                                <li><a href="javascript:void(0);">General</a></li>
-                                <li><a href="javascript:void(0);" class="fa fa-heart">28</a></li>
-                                <li><a href="javascript:void(0);" class="fa fa-comment">128</a></li>
-                            </ul>
                         </div>
                     </div>
-                <? endforeach ?>
+                    <div class="article-content">
+                        <p><?=$Blog['content']?></p>
+                    </div>
+                </article>
+            </div>
+            <? endforeach ?>
             <? endif ?>
-
-
-            <ul class="pagination pagination-primary">
-                <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
-                <? if (isset($data['TotalPage'])) : ?>
-                    <? for ($page = 1; $page <= $data['TotalPage']; $page++) : ?>
-                        <li class="page-item active ml-2"><a class="page-link" href="/?page=<?= $page ?>"><?= $page ?></a></li>
-                    <? endfor ?>
-                <? endif ?>
-
-                <li class="page-item ml-2"><a class="page-link" href="javascript:void(0);">Next</a></li>
-            </ul>
         </div>
         <div class="col-lg-4 col-md-12 right-box">
             <div class="card">
@@ -45,7 +34,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-search"></i></span>
                             </div>
-                            <input type="text" name = "SearchKey" class="form-control" placeholder="Tìm kiếm...">
+                            <input type="text" name="SearchKey" class="form-control" placeholder="Tìm kiếm...">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-primary">Tìm kiếm</button>
                             </div>
@@ -77,12 +66,12 @@
                         <div class="col-lg-12">
                             <? if (isset($data['RecentBlog'])) : ?>
                                 <? foreach ($data['RecentBlog'] as $RecentBlog) : ?>
-                                    <a href="/home/detailBlog?id=<?= $RecentBlog['id']?>" style="text-decoration: none;; color: inherit">
+                                    <a href="/home/detailBlog?id=<?= $RecentBlog['id'] ?>" style="text-decoration: none;; color: inherit">
                                         <div class="single_post">
                                             <p class="m-b-0"><?= $RecentBlog['title'] ?></p>
                                             <span><?= getTimeElapsedString($RecentBlog['created_at']) ?></span>
                                             <div class="img-post">
-                                                <img src="<?= $RecentBlog['image'] ?>" alt="Awesome Image" style="width:300px;height:200px">
+                                                <img src="/<?= $RecentBlog['image'] ?>" alt="Awesome Image" style="width:300px;height:200px">
                                             </div>
                                         </div>
                                     </a>

@@ -55,6 +55,7 @@
                         <th>ID</th>
                         <th>Tên danh mục</th>
                         <th>Ngày tạo</th>
+                        <th>Thao tác</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -63,6 +64,13 @@
                           <td><?= $category['id'] ?></td>
                           <td><?= $category['name'] ?></td>
                           <td><?= $category['created_at'] ?></td>
+                          <td class = row>
+                            <a class="btn btn-primary col-2" href="/category/edit?id=<?= $category['id']?>">Sửa</a>
+                            <form class="col" method="post" action = "/category/delete">
+                                <input name="id" type="hidden" value="<?= $category['id'] ?>">
+                                <button type ="submit" class = "btn btn-danger">Xóa</button>
+                            </form>
+                          </td>
                     </tbody>
                   <?php endforeach ?>
                 <?php endif ?>

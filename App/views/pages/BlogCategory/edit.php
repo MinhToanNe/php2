@@ -25,7 +25,7 @@
             <!-- jquery validation -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Thêm danh mục</h3>
+                <h3 class="card-title">Sửa danh mục</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -33,14 +33,17 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tên danh mục</label>
-                    <input type="text" name="name" class="form-control"  placeholder="Nhập tiêu đề">
+                    <? if(isset($data['ValueCategory'])):?>
+                    <? foreach( $data['ValueCategory'] as $category): ?>
+                    <input type="text" name="name" class="form-control" value="<?=$category["name"] ?>" placeholder="Nhập tiêu đề">
                     <p class="mt-2 text-danger"><?=$data['validateName']['name'] ?></p>
+                    <? endforeach ?>
+                    <? endif ?>
                   </div>
-                
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Thêm</button>
+                  <button type="submit" class="btn btn-primary">Xác nhận</button>
                 </div>
               </form>
             </div>

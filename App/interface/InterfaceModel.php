@@ -4,5 +4,5 @@ interface InterfaceModel
 {
    public function GetOne($table,$row,$value);
    public function Create(); 
-   public function Delete();
+   public function Delete($table, $col, $value);
 }

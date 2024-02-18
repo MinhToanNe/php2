@@ -15,6 +15,10 @@ class BaseRender extends BaseController
     {
         $this->load->render("/blocks/HeaderClient");
     }
+    public function renderFooter()
+    {
+        $this->load->render("/blocks/FooterClient");
+    }
 
     public function renderHeaderAdmin()
     {

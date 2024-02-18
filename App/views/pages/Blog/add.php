@@ -29,17 +29,34 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="quickForm">
+              <form method="post" enctype="multipart/form-data">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Tiêu đề</label>
-                    <input type="email" name="title" class="form-control"  placeholder="Nhập tiêu đề">
+                    <label >Tiêu đề</label>
+                    <input type="text" name="title" class="form-control"  placeholder="Nhập tiêu đề">
+                    <p class="text-danger mt-2"><?=isset($data['validate']['TitleValidate'])?$data['validate']['TitleValidate']:""?></p>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Nội dung</label>
-                   <textarea id="summernote">
-                Place <em>some</em> <u>text</u> <strong>here</strong>
+                   <textarea id="summernote" name = "content"></textarea>
+                   <p class="text-danger mt-2"><?=isset($data['validate']['ContentValidate'])?$data['validate']['ContentValidate']:""?></p>
               </textarea>
+                  </div>
+                  <div class="form-group">
+                    <label >Ảnh</label>
+                    <input type="file" name="image" class="form-control pt-1 pl-0 " >
+                    <p class="text-danger mt-2"><?=isset($data['validate']['ImageValidate'])?$data['validate']['ImageValidate']:""?></p>
+                  </div>
+                  <div class="form-group pt-3">
+                    <label >Danh mục</label>
+                    <select name="category" class ="ml-3" >
+                      <?if(isset($data['category'])):?>
+                        <?foreach($data['category'] as $category) :?>
+                          <option  value="<?=$category['id']?>"><?=$category['name']?></option>
+                          <?endforeach?>
+                      <?endif?>
+                    </select>
+                  </div>
                   </div>
                 </div>
                 <!-- /.card-body -->

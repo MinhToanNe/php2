@@ -2,6 +2,16 @@
     background-color: rgb(226, 226, 226);
 
 }
+footer {
+    background-color: rgb(226, 226, 226); /* Màu nền xám */
+    padding: 20px 0; /* Khoảng cách giữa phần nội dung và mép của footer */
+}
+
+footer p {
+    color: #666; /* Màu chữ xám nhạt */
+    font-size: 14px; /* Cỡ chữ */
+    margin-bottom: 0; /* Loại bỏ khoảng trống dưới dòng chữ */
+}
 
 body {
     background-color: #f4f7f6;
@@ -344,6 +354,8 @@ body {
         text-align: left;
         background-color: #fff;
     }
+
+
 
  
 

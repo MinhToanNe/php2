@@ -23,7 +23,6 @@ class ChangePassController extends BaseController
                     $password = password_hash($new_pass, PASSWORD_DEFAULT);
                     $token = $_GET['token'];
                     $change = $this->userModel->ChangePassword($password,$token);
-                   var_dump($change);
                    if($change)
                    {
                     $this->userModel->DeleteToken($password);

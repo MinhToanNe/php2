@@ -26,8 +26,10 @@ abstract class BaseModel  implements InterfaceModel
     {
 
     }
-    public function Delete()
+    public function Delete($table, $col, $value)
     {
+        $sql = "DELETE FROM $table WHERE $col=?";
+        return $this->db->pdo_execute($sql,$value);
 
     }
 }
