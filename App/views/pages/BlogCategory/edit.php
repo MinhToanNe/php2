@@ -33,12 +33,12 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tên danh mục</label>
-                    <? if(isset($data['ValueCategory'])):?>
-                    <? foreach( $data['ValueCategory'] as $category): ?>
+                    <?php if(isset($data['ValueCategory'])):?>
+                    <?php foreach( $data['ValueCategory'] as $category): ?>
                     <input type="text" name="name" class="form-control" value="<?=$category["name"] ?>" placeholder="Nhập tiêu đề">
                     <p class="mt-2 text-danger"><?=$data['validateName']['name'] ?></p>
-                    <? endforeach ?>
-                    <? endif ?>
+                    <?php endforeach ?>
+                    <?php endif ?>
                   </div>
                 </div>
                 <!-- /.card-body -->

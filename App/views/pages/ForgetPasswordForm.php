@@ -8,13 +8,14 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-header">
-          Quên mật khẩu
+          <h5>Quên mật khẩu</h5>
         </div>
         <div class="card-body">
           <form method="post">
             <div class="form-group">
               <label for="username">Email:</label>
-              <input type="text" class="form-control"  name="email" required>
+              <input type="text" class="form-control"  name="email">
+              <p class="text-danger mt-2"><?=(isset($data['validate']['validateEmail'])?$data['validate']['validateEmail']:"") ?></p>
             </div>
             <button type="submit" class="btn btn-primary">Xác nhận</button>
           </form>

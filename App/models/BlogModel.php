@@ -8,12 +8,13 @@ class BlogModel extends BaseModel
     {
         parent::__construct();
     }
-    public function GetAllBlog()
+    public function GetAllBlog($starIndex, $itemPerPage)
     {
         $sql = "SELECT b.*, u.user_name, c.name
                 FROM blogs b
                 INNER JOIN users u on b.user_id = u.id
-                INNER JOIN categorys c on b.category_id = c.id ";
+                INNER JOIN categorys c on b.category_id = c.id 
+                LIMIT $starIndex, $itemPerPage";
                 return $this->db->pdo_query($sql);
     }
     public function CreateBlog($category, $user_id, $title, $content, $image)
@@ -55,26 +56,41 @@ class BlogModel extends BaseModel
         $sql = "SELECT count(*) FROM blogs";
         return $this->db->pdo_query_value($sql);
     }
+    public function CoutBlogSearch($searchKey)
+    {
+        $sql = "SELECT count(*) FROM blogs
+                 WHERE title LIKE '%$searchKey%'";
+        return $this->db->pdo_query_value($sql,$searchKey);
+    }
+
+    public function CoutBlogCategry($category)
+    {
+        $sql = "SELECT count(*) FROM blogs
+                 WHERE category_id = ?";
+        return $this->db->pdo_query_value($sql,$category);
+    }
 
     public function GetAllBlogLimit($starIndex, $itemPerPage)
     {
         $sql = "SELECT * FROM blogs
                 LIMIT $starIndex, $itemPerPage ";
-                return $this->db->pdo_query($sql,$starIndex, $itemPerPage); 
+                return $this->db->pdo_query($sql); 
     }
 
-    public function GetBlogByCategory($category)
+    public function GetBlogByCategory($category,$starIndex, $itemPerPage)
     {
         $sql = "SELECT * FROM blogs
-        WHERE category_id = ? ";
+        WHERE category_id = ? 
+        LIMIT $starIndex, $itemPerPage";
         return $this->db->pdo_query($sql,$category); 
 
     }
 
-    public function SearchBlog($searchKey)
+    public function SearchBlog($searchKey, $starIndex, $itemPerPage )
     {
         $sql = "SELECT * FROM blogs
-        WHERE title LIKE '%$searchKey%' OR content LIKE '%$searchKey%' ";
+        WHERE title LIKE '%$searchKey%'
+        LIMIT $starIndex, $itemPerPage ";
         return $this->db->pdo_query($sql,$searchKey); 
 
     }

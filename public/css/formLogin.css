@@ -1,9 +1,12 @@
 body {
     background-color: #f8f9fa;
   }
+  h5 {
+    color: white;
+  }
   .card {
-    background-color:rgb(108, 105, 105);
-    color: #ffffff;
+    background-color:white;
+    color: #000000;
   }
   .card-header {
     background-color: #0056b3;

@@ -52,7 +52,7 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
-                        <th>ID</th>
+                        <th>STT</th>
                         <th>Tiêu đề</th>
                         <th>Thể loại</th>
                         <th>Image</th>
@@ -63,8 +63,10 @@
                     </thead>
                     <tbody>
                       <?php if (isset($data['BlogList'])) : ?>
+                        <?php $stt = 0 ?>
                         <?php foreach ($data['BlogList'] as $Blog) : ?>
-                          <td ><?= $Blog['id'] ?></td>
+                          <?php $stt++ ?>
+                          <td ><?= $stt ?></td>
                           <td class="text-wrap"><?= $Blog['title'] ?></td>
                           <td><?= $Blog['name'] ?></td>
                           <td><img src="<?= $Blog['image'] ?>" style= "width:150px; height:100px;" alt="Đang cập nhật"></td>
@@ -81,7 +83,22 @@
                   <?php endforeach ?>
                 <?php endif ?>
                   </table>
+                  <ul class="pagination pagination-primary">
+                  <?php if(!isset($_GET['page']))
+                {
+                    $_GET['page'] = 1;
+                }
+                ?>
+                <li class="page-item"><a class="page-link" href="/admin?page=<?= ($_GET["page"] > 1 ? $_GET["page"] - 1 : 1) ?>">Previous</a></li>
+                <?php if (isset($data['TotalPage'])) : ?>
+                    <?php for ($page = 1; $page <= $data['TotalPage']; $page++) : ?>
+                        <li class="page-item active ml-2"><a class="page-link" href="/admin?page=<?= $page ?>"><?= $page ?></a></li>
+                    <?php endfor ?>
+                <?php endif ?>
+                <li class="page-item ml-2"><a class="page-link" href="/admin?page=<?= $_GET["page"] < $data['TotalPage'] ? $_GET["page"] + 1 : $data['TotalPage'] ?>">Next</a></li>
+            </ul>
                 </div>
+                
                 
                 <!-- /.card-body -->
               </div>

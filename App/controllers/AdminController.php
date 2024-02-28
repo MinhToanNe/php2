@@ -25,17 +25,23 @@ class AdminController extends BaseController
         $id = $_SESSION['admin_id'];
 
         $adminName = $this->UserModel->GetOneById($id);
-        $BlogList = $this->BlogModel->GetAllBlog();
-
         $this->_renderBase->renderHeaderAdmin();
         $this->_renderBase->renderNavbarAdmin();
+        $itemPerPage = 4;
+        $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+        $starIndex =  ($currentPage - 1) * $itemPerPage;
+        $totalItem = $this->BlogModel->CoutBlog();
+        $totalPage =  ceil($totalItem / $itemPerPage);
+        $BlogList = $this->BlogModel->GetAllBlog($starIndex,$itemPerPage);
 
         $this->load->render("blocks/sidebar", [
             "adminName" => $adminName
         ]);
 
         $this->load->render("pages/homeAdminLayout", [
-            "BlogList" => $BlogList
+            "BlogList" => $BlogList,
+            "TotalPage"  => $totalPage,
+    
         ]);
 
         $this->_renderBase->renderFooterAdmin();
@@ -88,7 +94,7 @@ class AdminController extends BaseController
                         $image_name = "public/uploads/summernote/" . time() . $key . '.png';
                         file_put_contents($image_name, $data);
                         $img->removeAttribute('src');
-                        $img->setAttribute('src', "/".$image_name);
+                        $img->setAttribute('src', "/" . $image_name);
                     }
                     $content = mb_convert_encoding($dom->saveHTML(), 'UTF-8', 'HTML-ENTITIES');
                     if ($this->BlogModel->CreateBlog($category, $_SESSION['admin_id'], $title, $content, $image)) {
@@ -115,60 +121,61 @@ class AdminController extends BaseController
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $editBlog = $this->BlogModel->GetOneBlogById($id);
-        
-        $admin_id = $_SESSION['admin_id'];
-        $adminName = $this->UserModel->GetOneById($admin_id);
-        $categoryModel = $this->CategoryModel->GetAllCategory();
-        $validate = [];
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (empty($_POST['title'])) {
-                $validate += [
-                    'TitleValidate' => "Vui lòng nhập tiêu đề"
-                ];
-            }
+            $admin_id = $_SESSION['admin_id'];
+            $adminName = $this->UserModel->GetOneById($admin_id);
+            $categoryModel = $this->CategoryModel->GetAllCategory();
+            $validate = [];
 
-            if (empty($_POST['content'])) {
-                $validate += [
-                    'ContentValidate' => "Vui lòng nhập nội dung"
-                ];
-            }
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (empty($_POST['title'])) {
+                    $validate += [
+                        'TitleValidate' => "Vui lòng nhập tiêu đề"
+                    ];
+                }
 
-            $upload = $_FILES['image'];
-            if ($upload['error'] === UPLOAD_ERR_OK) {
-                $tmp = $upload['tmp_name'];
-                $oldName = $upload['name'];
-                $newName = uniqid() . '_' . $oldName;
-                $uploadDir = 'public/uploads/';
-                if (move_uploaded_file($tmp, $uploadDir . $newName)) {
-                    $image = $uploadDir . $newName;
-                    }}
-                 else {
+                if (empty($_POST['content'])) {
+                    $validate += [
+                        'ContentValidate' => "Vui lòng nhập nội dung"
+                    ];
+                }
+
+                $upload = $_FILES['image'];
+                if ($upload['error'] === UPLOAD_ERR_OK) {
+                    $tmp = $upload['tmp_name'];
+                    $oldName = $upload['name'];
+                    $newName = uniqid() . '_' . $oldName;
+                    $uploadDir = 'public/uploads/';
+                    if (move_uploaded_file($tmp, $uploadDir . $newName)) {
+                        $image = $uploadDir . $newName;
+                    }
+                } else {
                     $image = $_POST['thumbnail'];
                 }
 
-                    if (empty($validate)) {
-                        $title = $_POST['title'];
-                        $category = $_POST['category'];
-                        $content = $_POST['content'];
-                        $dom = new DOMDocument();
-                        $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-                        $images = $dom->getElementsByTagName('img');
-                        foreach ($images as $key => $img) {
-                            if (strpos($img->getAttribute('src'),'data:image/') ===0){
+                if (empty($validate)) {
+                    $title = $_POST['title'];
+                    $category = $_POST['category'];
+                    $content = $_POST['content'];
+                    $dom = new DOMDocument();
+                    $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+                    $images = $dom->getElementsByTagName('img');
+                    foreach ($images as $key => $img) {
+                        if (strpos($img->getAttribute('src'), 'data:image/') === 0) {
                             $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
                             $image_name = "public/uploads/summernote/" . time() . $key . '.png';
                             file_put_contents($image_name, $data);
-
                             $img->removeAttribute('src');
-                            $img->setAttribute('src',"/".$image_name);
-                        }}
-                        $content = mb_convert_encoding($dom->saveHTML(), 'UTF-8', 'HTML-ENTITIES');
-                        if ($this->BlogModel->EditBlog($title, $category, $content, $image, $_SESSION['admin_id'], $id )) {
-                            header("Location: /admin");
-                            exit();
+                            $img->setAttribute('src', "/" . $image_name);
+                        }
+                    }
+                    $content = mb_convert_encoding($dom->saveHTML(), 'UTF-8', 'HTML-ENTITIES');
+                    if ($this->BlogModel->EditBlog($title, $category, $content, $image, $_SESSION['admin_id'], $id)) {
+                        header("Location: /admin");
+                        exit();
+                    }
                 }
-            }}
+            }
         }
 
         $this->_renderBase->renderHeaderAdmin();

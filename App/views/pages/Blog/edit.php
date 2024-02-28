@@ -7,7 +7,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Thêm bài viết</h1>
+              <h1>Sửa bài viết</h1>
             </div>
 
           </div>
@@ -23,13 +23,13 @@
               <!-- jquery validation -->
               <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">S bài viết</h3>
+                  <h3 class="card-title">Sửa bài viết</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form method="post" enctype="multipart/form-data">
-                  <? if (isset($data['EditBlog'])) : ?>
-                    <? foreach ($data['EditBlog'] as $Blog) : ?>
+                  <?php if (isset($data['EditBlog'])) : ?>
+                    <?php foreach ($data['EditBlog'] as $Blog) : ?>
                       <div class="card-body">
                         <div class="form-group">
                           <label>Tiêu đề</label>
@@ -51,15 +51,15 @@
                         <div class="form-group pt-3">
                           <label>Danh mục</label>
                           <select name="category" class="ml-3">
-                            <? if (isset($data['category'])) : ?>
-                              <? foreach ($data['category'] as $category) : ?>
+                            <?php if (isset($data['category'])) : ?>
+                              <?php foreach ($data['category'] as $category) : ?>
                                 <option value="<?= $category['id'] ?>" <?= ($Blog["category_id"] == $category['id']) ? "selected" : "" ?>><?= $category['name'] ?></option>
-                              <? endforeach ?>
-                            <? endif ?>
+                              <?php endforeach ?>
+                            <?php endif ?>
                           </select>
                         </div>
-                      <? endforeach ?>
-                    <? endif ?>
+                      <?php endforeach ?>
+                    <?php endif ?>
                       </div>
                 
               </div>

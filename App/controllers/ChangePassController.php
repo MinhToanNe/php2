@@ -15,25 +15,30 @@ class ChangePassController extends BaseController
     }
     public function index()
     {
-        if (isset($_GET['token']))
-        {
-            if($_SERVER["REQUEST_METHOD"] == "POST") 
-            {
-                    $new_pass = $_POST['password'];
-                    $password = password_hash($new_pass, PASSWORD_DEFAULT);
-                    $token = $_GET['token'];
-                    $change = $this->userModel->ChangePassword($password,$token);
-                   if($change)
-                   {
-                    $this->userModel->DeleteToken($password);
-                    header("Location: /login");
-                   }
-                    
+        if (isset($_GET['token'])) {
+            $validate = [];
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $new_pass = $_POST['password'];
+                $password = password_hash($new_pass, PASSWORD_DEFAULT);
+                $token = $_GET['token'];
+                if (empty($new_pass)) {
+                    $validate +=
+                        [
+                            "validatePass" => "Mật khẩu không được trống"
+                        ];
+                }
+                if (empty($validate)) {
+                    $change = $this->userModel->ChangePassword($password, $token);
+                    if ($change) {
+                        $this->userModel->DeleteToken($password);
+                        header("Location: /login");
+                    }
+                }
             }
-        
-
         }
-        
-        $this->load->render('pages/ChangePasswordForm');
+
+        $this->load->render('pages/ChangePasswordForm', [
+            "validate" => $validate
+        ]);
     }
 }

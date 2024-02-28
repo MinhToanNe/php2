@@ -18,6 +18,7 @@ class UserModel extends BaseModel
        
         return $this->GetOne('users', 'id', $user_id);
     }
+    
 
 
     public function ResetPassword($token,$email)

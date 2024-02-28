@@ -50,11 +50,11 @@
                   <div class="form-group pt-3">
                     <label >Danh mục</label>
                     <select name="category" class ="ml-3" >
-                      <?if(isset($data['category'])):?>
-                        <?foreach($data['category'] as $category) :?>
+                      <?php if(isset($data['category'])):?>
+                        <?php foreach($data['category'] as $category) :?>
                           <option  value="<?=$category['id']?>"><?=$category['name']?></option>
-                          <?endforeach?>
-                      <?endif?>
+                          <?php endforeach?>
+                      <?php endif?>
                     </select>
                   </div>
                   </div>

@@ -17,17 +17,20 @@ ob_start();
     <div class="col-md-6">
       <div class="card">
         <div class="card-header">
-          Đăng Nhập
+          <h5>Đăng Nhập</h5>
         </div>
         <div class="card-body">
           <form method="post">
             <div class="form-group">
               <label for="username">Tên người dùng:</label>
-              <input type="text" class="form-control" id="username" name="username" required>
+              <input type="text" class="form-control" id="username" name="username" >
+              <p class="text-danger"><?=(isset($data['validate']['validateUsername'])?$data['validate']['validateUsername']:"") ?></p>
             </div>
             <div class="form-group">
               <label for="password">Mật khẩu:</label>
-              <input type="password" class="form-control" id="password" name="password" required>
+              <input type="password" class="form-control" id="password" name="password" >
+              <p class="text-danger"><?=(isset($data['validate']['validatePass'])?$data['validate']['validatePass']:"") ?></p>
+              
             </div>
             <button type="submit" class="btn btn-primary">Đăng Nhập</button>
             <button type="submit" class="btn btn-primary"><a href="/ForgetPassword">Quên Mật Khẩu</a></button>
