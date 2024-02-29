@@ -14,6 +14,7 @@ class BlogModel extends BaseModel
                 FROM blogs b
                 INNER JOIN users u on b.user_id = u.id
                 INNER JOIN categorys c on b.category_id = c.id 
+                ORDER BY b.id ASC
                 LIMIT $starIndex, $itemPerPage";
                 return $this->db->pdo_query($sql);
     }

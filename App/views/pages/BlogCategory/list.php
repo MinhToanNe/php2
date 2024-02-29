@@ -66,7 +66,7 @@
                           <td><?= $category['created_at'] ?></td>
                           <td class = row>
                             <a class="btn btn-primary col-2" href="/category/edit?id=<?= $category['id']?>">Sửa</a>
-                            <form class="col" method="post" action = "/category/delete">
+                            <form class="col" method="post" action = "/category/delete" onsubmit="return confirm('Bạn có chắc chắn muốn xóa bài đăng này?')">
                                 <input name="id" type="hidden" value="<?= $category['id'] ?>">
                                 <button type ="submit" class = "btn btn-danger">Xóa</button>
                             </form>
